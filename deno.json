@@ -1,0 +1,32 @@
+{
+  "tasks": {
+    "local": "deno serve --watch --port 5503 ./src/main.ts",
+    "dev": "deno run --watch main.ts",
+    "lint": "deno lint",
+    "lint:fix": "deno lint --fix",
+    "fmt": "deno fmt",
+    "fmt:check": "deno fmt --check"
+  },
+  "lint": {
+    "include": [
+      "src/**/*.ts"
+    ]
+  },
+  "fmt": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "indentWidth": 2,
+    "lineWidth": 80,
+    "semiColons": true,
+    "singleQuote": false,
+    "useTabs": false
+  },
+  "imports": {
+    "@hono/mcp": "npm:@hono/mcp@^0.1.0",
+    "@modelcontextprotocol/sdk": "npm:@modelcontextprotocol/sdk@^1.13.2",
+    "@std/assert": "jsr:@std/assert@1",
+    "hono": "npm:hono@^4.8.3",
+    "zod": "npm:zod@^3.25.67"
+  }
+}
