@@ -1,7 +1,7 @@
 {
   "tasks": {
     "local": "deno serve --watch --port 5503 ./src/main.ts",
-    "dev": "deno run --watch main.ts",
+    "dev": "deno run --watch ./src/main.ts",
     "lint": "deno lint",
     "lint:fix": "deno lint --fix",
     "fmt": "deno fmt",
