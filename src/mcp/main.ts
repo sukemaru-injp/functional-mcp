@@ -1,5 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
+import { basicPractice, basicPracticeSchema } from "./tools/basic-practice.ts";
 
 export function createMcpServer() {
   const server = new McpServer({
@@ -43,6 +44,21 @@ export function createMcpServer() {
       },
     }],
   }));
+
+  server.registerTool("basic-practice", {
+    description: "Get functional programming guidance for implementation",
+    inputSchema: basicPracticeSchema.shape,
+  }, ({ language, context }) => {
+    const guidance = basicPractice({ language, context });
+    return {
+      content: [
+        {
+          type: "text",
+          text: guidance,
+        },
+      ],
+    };
+  });
 
   return server;
 }
