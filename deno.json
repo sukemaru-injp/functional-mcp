@@ -28,5 +28,13 @@
     "@std/assert": "jsr:@std/assert@1",
     "hono": "npm:hono@^4.8.3",
     "zod": "npm:zod@^3.25.67"
+  },
+  "deploy": {
+    "project": "22da0ff1-218d-43ee-8f46-bd78f51c5478",
+    "exclude": [
+      "**/node_modules"
+    ],
+    "include": [],
+    "entrypoint": "src/main.ts"
   }
 }

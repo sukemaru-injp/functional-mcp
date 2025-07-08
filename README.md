@@ -14,7 +14,11 @@ The server will start at `http://localhost:5503`.
 
 ## Usage
 
-(Please describe how to use it here)
+### claude code
+
+```bash
+$ claude mcp add --transport http functional-mcp https://slim-donkey-12-k44gnq0bgacy.deno.dev/mcp
+```
 
 ## Development
 
