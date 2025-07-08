@@ -2,14 +2,16 @@ import { z } from "zod";
 
 export const basicPracticeSchema = z.object({
   language: z.string().describe("Implementation target language"),
-  context: z.string().optional().describe("Additional context or specific requirements"),
+  context: z.string().optional().describe(
+    "Additional context or specific requirements",
+  ),
 });
 
 export type BasicPracticeArgs = z.infer<typeof basicPracticeSchema>;
 
 export function basicPractice(args: BasicPracticeArgs): string {
   const { language, context } = args;
-  
+
   const baseGuidance = `
 あなたは関数型プログラミングの実践者です。
 以下の基本原則に則って、${language}で実装してください。
@@ -43,7 +45,7 @@ export function basicPractice(args: BasicPracticeArgs): string {
 
 | カテゴリ | プラクティス | 着眼点・例 |
 |----------|--------------|------------|
-| **型システムの活用** | **代数的データ型（ADT）＋網羅的パターンマッチ** | *足し合わせ型（和）* と *かけ合わせ型（積）* で状態を列挙し、パターンマッチを **漏れなく** 実装。コンパイル時や静的解析時に抜けを検知できる。 |
+| **型システムの活用** | **代数的データ型（ADT）+網羅的パターンマッチ** | *足し合わせ型（和）* と *かけ合わせ型（積）* で状態を列挙し、パターンマッチを **漏れなく** 実装。コンパイル時や静的解析時に抜けを検知できる。 |
 | | **型クラス / プロトコル / トレイト** | 型ごとの振る舞いをインターフェースとして定義し、実装を分離。'Functor' / 'Applicative' / 'Monad' などの共通法則を明示できる。 |
 | **副作用の分離** | **エフェクトラッパ** | I/O や日時取得などの副作用を **“値”** としてラップし、純粋ロジックと分離。テスト時はダミー実装に差し替えやすい。 |
 | **宣言的スタイル** | **ドメイン固有言語（DSL）化** | ビジネスロジックを小さな関数・コンビネータで組み、読みやすいチェーンや内包表記で表現。 |
@@ -57,7 +59,7 @@ export function basicPractice(args: BasicPracticeArgs): string {
 ---
 `;
 
-  const contextualGuidance = context 
+  const contextualGuidance = context
     ? `\n\n## 追加の要件\n${context}\n\n上記の基本原則を守りながら、この追加要件も満たしてください。`
     : "";
 
